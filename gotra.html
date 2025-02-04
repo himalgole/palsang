@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Envelope with Letter Animation</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+
+        .envelope {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            background-color: #d3a87c;
+            border: 2px solid #b08860;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background-color: #b08860;
+            text-align: center;
+            clip-path: polygon(0 0, 50% 100%, 100% 0);
+            transition: transform 0.5s ease-out;
+            transform-origin: top;
+        }
+
+        .letter {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, 50%) scale(0);
+            width: 280px;
+            height: 200px;
+            background: repeating-linear-gradient(to bottom,
+                    #fff,
+                    /* white background */
+                    #fff 24px,
+                    /* white for 24px */
+                    #ccc 24px,
+                    /* light grey line starts at 24px */
+                    #ccc 25px
+                    /* grey line thickness 1px */
+                );
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+
+            transition: transform 0.5s ease-in-out;
+            overflow: hidden;
+        }
+        .letter h3
+        {
+            padding: 14px 20px 0px 10px;
+        }
+        .letter p
+        {
+            padding: 10px 20px 0px 10px;
+        }
+        .letter a
+        {
+            text-decoration: none;
+            color: red;
+            padding: 10px 20px 0px 10px;
+        }
+        .wisher
+        {
+            display: block;
+            padding-left: 10px;
+        }
+
+        .envelope.open .flap {
+            transform: rotateX(180deg);
+        }
+
+        .envelope.open .letter {
+            transition-delay: 0.6s;
+            transform: translate(-50%, -50%) scale(1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="envelope" onclick="this.classList.toggle('open')">
+        <div class="flap">
+            <p style="color: #fff; font-weight: 600;">Click Me!</p>
+        </div>
+        <div class="letter">
+            <h3>Dear Nani,</h3>
+            <p>Malai dherai ignore nagara hai. Natra roidinxu 😢😢😂</p>
+            <a href="#">Sincerely Yours,<span class="wisher">Himal Dai</span></a>
+        </div>
+    </div>
+
+</body>
+
+</html>
